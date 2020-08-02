@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
 
 const Header = ({ siteTitle }) => (
-    <header>
-        <Typography variant="h3" component="h1">
-            {siteTitle}
+    <Container component="header">
+        <Typography variant="h4" component="h1">
+            Calories Calculator
         </Typography>
-    </header>
+        <Typography paragraph>Get your Basal Metabolic Rate and BMI.</Typography>
+    </Container>
 );
 
 Header.propTypes = {
