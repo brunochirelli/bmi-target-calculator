@@ -2,7 +2,18 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 // material-ui
-import { Typography, Container, InputAdornment, FormControlLabel, Radio, Box, Grid } from '@material-ui/core';
+import {
+    Typography,
+    Container,
+    InputAdornment,
+    FormControlLabel,
+    Radio,
+    Box,
+    Grid,
+    Divider,
+    Chip,
+    Avatar,
+} from '@material-ui/core';
 import { Button } from 'gatsby-theme-material-ui';
 
 // formik
@@ -12,11 +23,17 @@ import { TextField, RadioGroup } from 'formik-material-ui';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import BmiBadge from '../components/BmiBadge';
 
 const IndexPage = () => {
-    const [infos, setInfos] = useState(null);
     const [basalRate, setBasalRate] = useState(null);
+    const [dailyBurn, setDailyBurn] = useState(null);
+
     const [bmi, setBmi] = useState(null);
+    const [bmiStatus, setBmiStatus] = useState(null);
+    const [bmiColor, setBmiColor] = useState(null);
+
+    const [infos, setInfos] = useState(null);
     const [calculated, setCalculated] = useState(false);
 
     const calcBasalRate = values =>
@@ -24,6 +41,24 @@ const IndexPage = () => {
 
     const calcBMI = values => {
         const BMI = values.weight / ((values.height * values.height) / 10000);
+
+        if (BMI <= 18.5) {
+            setBmiStatus('Underweight 18.5 or less');
+            setBmiColor('#26B9E8');
+        }
+        if (BMI >= 18.5 && bmi < 25) {
+            setBmiStatus('Normal Weight 18.5 - 24.99');
+            setBmiColor('#26B9E8');
+        }
+        if (BMI >= 25 && bmi < 30) {
+            setBmiStatus('Overweight 25 - 29.9');
+            setBmiColor('#ECD71C');
+        }
+        if (BMI > 30) {
+            setBmiStatus('Obese 30+');
+            setBmiColor('#FF0000');
+        }
+
         return BMI.toFixed(2);
     };
 
@@ -33,53 +68,29 @@ const IndexPage = () => {
             <Box>
                 {calculated ? (
                     <>
-                        <Box component="section">
-                            <Container maxWidth="sm" style={{ marginBottom: '1rem', textAlign: 'center' }}>
-                                <Typography variant="h4" component="h2">
-                                    Your Stats
-                                </Typography>
-                            </Container>
-                            <Box component="section" color="white" bgcolor="black">
-                                <Container maxWidth="sm">
-                                    <Box
-                                        display="flex"
-                                        justifyContent="space-between"
-                                        textAlign="center"
-                                        paddingY="1rem"
-                                        component={Grid}
-                                        container
-                                    >
-                                        <Grid item>
-                                            <Typography>age</Typography>
-                                            <Typography variant="h4">{infos.age}</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography>height/cm</Typography>
-                                            <Typography variant="h4">{infos.height}</Typography>
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography>weight/cm</Typography>
-                                            <Typography variant="h4">{infos.weight}</Typography>
-                                        </Grid>
-                                    </Box>
-                                </Container>
-                            </Box>
-                        </Box>
-
                         <Container maxWidth="sm">
-                            <Box display="flex" justifyContent="space-between" marginY="1rem">
-                                <Box>
-                                    <Typography>Basal Rate</Typography>
-                                    <Typography variant="h3" component="p">
+                            <Box marginY="1rem">
+                                <Box marginY="1.5rem">
+                                    <Typography variant="h6" component="h2" display="inline">
+                                        BMI
+                                    </Typography>{' '}
+                                    <span>body mass index</span>
+                                    <Typography variant="h2" component="p">
+                                        {bmi}
+                                    </Typography>
+                                    <BmiBadge label={bmiStatus} color={bmiColor} />
+                                </Box>
+                                <Divider />
+                                <Box marginY="1.5rem">
+                                    <Typography variant="h6" component="h2" display="inline">
+                                        Basal Rate
+                                    </Typography>{' '}
+                                    <span>calories/day</span>
+                                    <Typography variant="h2" component="p">
                                         {basalRate}
                                     </Typography>
                                 </Box>
-                                <Box>
-                                    <Typography>BMI</Typography>
-                                    <Typography variant="h3" component="p">
-                                        {bmi}
-                                    </Typography>
-                                </Box>
+                                <Divider />
                             </Box>
                         </Container>
 
