@@ -28,6 +28,7 @@ import BmiBadge from '../components/BmiBadge';
 const IndexPage = () => {
     const [basalRate, setBasalRate] = useState(null);
     const [dailyBurn, setDailyBurn] = useState(null);
+    const [activity, setActivity] = useState(340);
 
     const [bmi, setBmi] = useState(null);
     const [bmiStatus, setBmiStatus] = useState(null);
@@ -91,6 +92,55 @@ const IndexPage = () => {
                                     </Typography>
                                 </Box>
                                 <Divider />
+                                <Box marginY="1.5rem">
+                                    <Typography variant="h6" component="h2" display="inline">
+                                        Daily Burn
+                                    </Typography>{' '}
+                                    <span>calories/day</span>
+                                    <Typography variant="h2" component="p">
+                                        {basalRate + activity}
+                                    </Typography>
+                                    <Chip
+                                        label="sedentary"
+                                        variant="outlined"
+                                        onClick={() => setActivity(340)}
+                                        style={{
+                                            background: activity === 340 ? 'black' : null,
+                                            color: activity === 340 ? 'white' : 'inherit',
+                                            margin: '0.25rem 0.25rem 0 0',
+                                        }}
+                                    />
+                                    <Chip
+                                        label="low"
+                                        variant="outlined"
+                                        onClick={() => setActivity(500)}
+                                        style={{
+                                            background: activity === 500 ? 'black' : null,
+                                            color: activity === 500 ? 'white' : 'inherit',
+                                            margin: '0.25rem 0.25rem 0 0',
+                                        }}
+                                    />
+                                    <Chip
+                                        label="medium"
+                                        variant="outlined"
+                                        onClick={() => setActivity(750)}
+                                        style={{
+                                            background: activity === 750 ? 'black' : null,
+                                            color: activity === 750 ? 'white' : 'inherit',
+                                            margin: '0.25rem 0.25rem 0 0',
+                                        }}
+                                    />
+                                    <Chip
+                                        label="high"
+                                        variant="outlined"
+                                        onClick={() => setActivity(1000)}
+                                        style={{
+                                            background: activity === 1000 ? 'black' : null,
+                                            color: activity === 1000 ? 'white' : 'inherit',
+                                            margin: '0.25rem 0.25rem 0 0',
+                                        }}
+                                    />
+                                </Box>
                             </Box>
                         </Container>
 
