@@ -5,7 +5,7 @@ import { Typography, Container, Box } from '@material-ui/core';
 const Header = () => (
     <Box component="header" bgcolor="black" color="white" paddingTop="2.5rem" paddingBottom="1rem">
         <Container>
-            <Typography variant="h4" component="h1">
+            <Typography variant="h5" component="h1" style={{ fontFamily: 'stolzl' }}>
                 Calories Calculator
             </Typography>
         </Container>

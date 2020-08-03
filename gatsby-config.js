@@ -28,6 +28,14 @@ module.exports = {
             },
         },
         {
+            resolve: 'gatsby-plugin-web-font-loader',
+            options: {
+                typekit: {
+                    id: 'dby6lef',
+                },
+            },
+        },
+        {
             resolve: `gatsby-plugin-material-ui`,
             options: {
                 stylesProvider: {
