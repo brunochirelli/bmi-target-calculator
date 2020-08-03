@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from 'react';
+import PropTypes from 'prop-types';
+import RootWrapper from './RootWrapper';
 
-// You can delete this file if you're not using it
+export const wrapPageElement = ({ element }) => <RootWrapper>{element}</RootWrapper>;
+
+wrapPageElement.propTypes = {
+    element: PropTypes.any,
+};
