@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconButton, Box } from '@material-ui/core';
-import { Github, TrackChanges } from '@material-ui/icons';
+import { GitHub, TrackChanges } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
 import { cleanData } from '../../features/metrics/metricsSlice';
 
@@ -17,7 +17,7 @@ const Header = () => {
         </div>
         <div>
           <IconButton href="https://github.com/brunochirelli/bmi-target-calculator" target="_blank">
-            <Github />
+            <GitHub />
           </IconButton>
         </div>
       </Box>
