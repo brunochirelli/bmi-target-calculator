@@ -1,7 +1,17 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+/* eslint-disable no-template-curly-in-string */
 
-// You can delete this file if you're not using it
+exports.onCreateBabelConfig = ({ actions }) => {
+    actions.setBabelPlugin({
+        name: 'babel-plugin-transform-imports',
+        options: {
+            '@material-ui/core': {
+                transform: '@material-ui/core/esm/${member}',
+                preventFullImport: true,
+            },
+            '@material-ui/icons': {
+                transform: '@material-ui/icons/esm/${member}',
+                preventFullImport: true,
+            },
+        },
+    });
+};
