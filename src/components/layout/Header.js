@@ -16,7 +16,7 @@ const Header = () => {
           </IconButton>
         </div>
         <div>
-          <IconButton href="https://github.com/brunochirelli/calories-calculator" target="_blank">
+          <IconButton href="https://github.com/brunochirelli/bmi-target-calculator" target="_blank">
             <Github />
           </IconButton>
         </div>
