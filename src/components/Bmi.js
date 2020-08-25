@@ -76,7 +76,7 @@ const Bmi = ({ metrics }) => {
     <Box textAlign="center" display="flex" alignItems="center" height="90vh">
       <Grid container alignItems="center">
         <Grid item xs={12}>
-          <Typography>BMI</Typography>
+          <Typography style={{ fontWeight: 'bolder' }}>BMI</Typography>
           <Typography>body mass index</Typography>
           <Typography variant="h1">{metrics.bmi}</Typography>
           <Chip
@@ -87,12 +87,12 @@ const Bmi = ({ metrics }) => {
         </Grid>
         <Grid item xs={12} style={{ padding: '2rem 0' }}>
           <Typography>
-            <span style={{ fontWeight: 'bolder' }}>{bmiTargetWeight1} kg</span> to{' '}
-            {bmiTargetStatus1}
+            <span style={{ fontWeight: 'bolder', fontSize: '1.25rem' }}>{bmiTargetWeight1} kg</span>{' '}
+            to {bmiTargetStatus1}
           </Typography>
           <Typography>
-            <span style={{ fontWeight: 'bolder' }}>{bmiTargetWeight2} kg</span> to{' '}
-            {bmiTargetStatus2}
+            <span style={{ fontWeight: 'bolder', fontSize: '1.25rem' }}>{bmiTargetWeight2} kg</span>{' '}
+            to {bmiTargetStatus2}
           </Typography>
         </Grid>
       </Grid>
