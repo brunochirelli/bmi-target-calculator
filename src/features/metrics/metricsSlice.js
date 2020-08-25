@@ -18,6 +18,8 @@ export const metricsSlice = createSlice({
       },
       prepare({ weight, height }) {
         const bmi = weight / ((height * height) / 10000);
+        sessionStorage.setItem('weight', weight);
+        sessionStorage.setItem('height', height);
         return {
           payload: {
             weight,
