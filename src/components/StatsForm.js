@@ -18,8 +18,8 @@ const StatsForm = () => {
   return (
     <Formik
       initialValues={{
-        weight: '',
-        height: '',
+        weight: '' || sessionStorage.getItem('weight'),
+        height: '' || sessionStorage.getItem('height'),
       }}
       validationSchema={Yup.object({
         weight: Yup.number().required('Insert your weight in kg'),
